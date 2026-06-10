@@ -55,3 +55,19 @@ class GalaxyCNN(nn.Module):
 def create_model(num_classes=10):
     model = GalaxyCNN(num_classes=num_classes)
     return model
+
+
+from torchvision import models
+
+
+def create_resnet18_model(num_classes=10, pretrained=True):
+    if pretrained:
+        weights = models.ResNet18_Weights.DEFAULT
+    else:
+        weights = None
+
+    model = models.resnet18(weights=weights)
+
+    model.fc = nn.Linear(model.fc.in_features, num_classes)
+
+    return model

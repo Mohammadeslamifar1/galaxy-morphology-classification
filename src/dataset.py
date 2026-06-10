@@ -76,6 +76,7 @@ def get_transforms(image_size=69):
     train_transform = transforms.Compose(
         [
             transforms.ToPILImage(),
+            transforms.Resize((image_size, image_size)),
             transforms.RandomHorizontalFlip(),
             transforms.RandomRotation(15),
             transforms.ToTensor(),
@@ -89,6 +90,7 @@ def get_transforms(image_size=69):
     eval_transform = transforms.Compose(
         [
             transforms.ToPILImage(),
+            transforms.Resize((image_size, image_size)),
             transforms.ToTensor(),
             transforms.Normalize(
                 mean=[0.485, 0.456, 0.406],
@@ -100,12 +102,12 @@ def get_transforms(image_size=69):
     return train_transform, eval_transform
 
 
-def create_dataloaders(batch_size=64, num_workers=0):
+def create_dataloaders(batch_size=64, num_workers=0, image_size=69):
     images, labels = load_galaxy10_data()
 
     train_indices, val_indices, test_indices = create_data_splits(images, labels)
 
-    train_transform, eval_transform = get_transforms()
+    train_transform, eval_transform = get_transforms(image_size=image_size)
 
     train_dataset = Galaxy10Dataset(
         images=images[train_indices],

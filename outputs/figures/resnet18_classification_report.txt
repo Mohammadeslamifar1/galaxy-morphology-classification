@@ -1,0 +1,18 @@
+ResNet18 Test Accuracy: 0.8608
+
+                            precision    recall  f1-score   support
+
+    Disk Face On No Spiral       0.83      0.63      0.72       519
+   Smooth Completely Round       0.92      0.95      0.94      1050
+   Smooth In Between Round       0.88      0.94      0.91       944
+       Smooth Cigar Shaped       0.68      0.48      0.56        52
+Disk Edge On Rounded Bulge       0.81      0.97      0.89       230
+   Disk Edge On Boxy Bulge       0.00      0.00      0.00         3
+     Disk Edge On No Bulge       0.81      0.78      0.80        88
+ Disk Face On Tight Spiral       0.78      0.73      0.75       168
+Disk Face On Medium Spiral       0.71      0.69      0.70       136
+ Disk Face On Loose Spiral       0.62      0.88      0.73        78
+
+                  accuracy                           0.86      3268
+                 macro avg       0.71      0.71      0.70      3268
+              weighted avg       0.86      0.86      0.86      3268
